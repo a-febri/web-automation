@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static com.ibm.icu.text.PluralRules.Operand.j;
+
 @DefaultUrl("https://www.saucedemo.com/inventory.html")
 public class InventoryPage extends PageObject {
     @Managed
@@ -61,7 +63,7 @@ public class InventoryPage extends PageObject {
     public String getActiveSort(){
         return driver.findElement(sortActive).getAttribute("innerHTML");
     }
-    public void checkSortByNameZtoA(){
+    public boolean checkSortByNameZtoA(){
         ArrayList<String> obtainedList = new ArrayList<>();
         List<WebElement> elementList= driver.findElements(By.className("inventory_item_name"));
         for(WebElement q: elementList){
@@ -70,9 +72,9 @@ public class InventoryPage extends PageObject {
         ArrayList<String> sortedList = new ArrayList<>(obtainedList);
         Collections.sort(sortedList);
         Collections.reverse(sortedList);
-        Assert.assertEquals(sortedList, obtainedList);
+        return sortedList.equals(obtainedList);
     }
-    public void checkSortInventoryNameByDefault(){
+    public boolean checkSortInventoryNameByDefault(){
         ArrayList<String> obtainedList = new ArrayList<>();
         List<WebElement> elementList= driver.findElements(By.className("inventory_item_name"));
         for(WebElement we: elementList){
@@ -80,7 +82,7 @@ public class InventoryPage extends PageObject {
         }
         ArrayList<String> sortedList = new ArrayList<>(obtainedList);
         Collections.sort(sortedList);
-        Assert.assertEquals(sortedList, obtainedList);
+        return sortedList.equals(obtainedList);
     }
 
 }

@@ -5,9 +5,6 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import static org.junit.Assert.*;
-import java.util.List;
 
 @DefaultUrl("https://www.saucedemo.com/cart.html")
 public class CartPage extends PageObject {
@@ -27,10 +24,10 @@ public class CartPage extends PageObject {
     public void clickContinueButton(){
         driver.findElement(continueButton).click();
     }
-    public void isItemDeleted(){
-        List<WebElement> removeButton= driver.findElements(By.id("remove-test.allthethings()-t-shirt-(red)"));
-        assertTrue(removeButton.isEmpty());
-        List<WebElement> inventoryName=driver.findElements(By.cssSelector("#item_3_title_link > div:nth-child(1)"));
-        assertTrue(inventoryName.isEmpty());
+    public boolean isRemoveButtonDeleted(){
+        return driver.findElements(By.id("remove-test.allthethings()-t-shirt-(red)")).isEmpty();
+    }
+    public boolean isInventoryNameDeleted(){
+       return driver.findElements(By.cssSelector("#item_3_title_link > div:nth-child(1)")).isEmpty();
     }
 }

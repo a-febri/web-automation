@@ -25,7 +25,8 @@ public class RemoveItemStepDef {
     }
     @Then("The last added product will be disappear on the cart page")
     public void TheLasProductWillBeDisappearOnTheCartPage(){
-        cartPage.isItemDeleted();
+        assertTrue(cartPage.isRemoveButtonDeleted());
+        assertTrue(cartPage.isInventoryNameDeleted());
         cartPage.clickContinueButton(); //kembali ke halaman awal untuk cek tombol add to cart muncul
         assertTrue(inventoryPage.isAddtoCartVisible()); //cek tombol add to cart
     }

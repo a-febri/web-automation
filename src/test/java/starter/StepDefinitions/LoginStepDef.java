@@ -40,7 +40,7 @@ public class LoginStepDef {
         assertEquals("https://www.saucedemo.com/inventory.html",inventoryPage.getUrl());
         assertTrue(inventoryPage.isCartVisible());
         assertEquals("PRODUCTS", inventoryPage.getHeaderTitle());
-        inventoryPage.checkSortInventoryNameByDefault();
+        assertTrue(inventoryPage.checkSortInventoryNameByDefault());
     }
 
     @Given("I Already logged in")

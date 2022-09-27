@@ -6,6 +6,7 @@ import io.cucumber.java.en.When;
 import starter.Pages.InventoryPage;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class SortItemStepDef {
@@ -22,6 +23,6 @@ public class SortItemStepDef {
     @Then("Product should be sorted by {string}")
     public void ProductShouldBeSortedBy(String string){
         assertEquals(string,inventoryPage.getActiveSort());
-        inventoryPage.checkSortByNameZtoA();
+        assertTrue(inventoryPage.checkSortByNameZtoA());
     }
 }
